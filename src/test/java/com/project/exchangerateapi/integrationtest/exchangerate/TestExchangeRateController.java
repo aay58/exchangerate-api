@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TestGetExchangeRate {
+public class TestExchangeRateController {
     @LocalServerPort
     private int port;
 
@@ -33,7 +33,7 @@ public class TestGetExchangeRate {
     @Test
     public void testGetExchangeRatesListTodayByCurrencyCode(){
         //if today is not weekend
-        Currency currency = this.restTemplate.getForObject("http://localhost:" + port + "/api//getExchangeRatesListTodayByCurrencyCode/USD", Currency.class);
+        Currency currency = this.restTemplate.getForObject("http://localhost:" + port + "/api/getExchangeRatesListTodayByCurrencyCode/USD", Currency.class);
 
         assertNotNull(currency);
         assertEquals(currency.getIsim(), "ABD DOLARI");
