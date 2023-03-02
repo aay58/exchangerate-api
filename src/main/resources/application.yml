@@ -1,0 +1,13 @@
+spring:
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+    expire_time: 10
+
+tcmb:
+  api:
+    today-url: https://www.tcmb.gov.tr/kurlar/today.xml
+    date-url: https://www.tcmb.gov.tr/kurlar/{yearandmonth}/{date}.xml
+    timeout: 30000
