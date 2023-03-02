@@ -1,4 +1,8 @@
 # Merkez Bankasından döviz kurlarını sorgular
+--------------------------
+**Verileri cacheden getirmek için redis kullanıldı. Docker içine redis kuruldu. Redis ve dockerli kodu görmek için redis_docker branchine bakmalısınız**
+Redis_cache branchini çalıştırmak için ana docker-compose up yaptıktan sonra projeyi çalıştırmalısınız.
+------------------
 **1- Döviz kurlarının döviz kodlarına göre aynı gün için sorgulayabileceğimiz Rest Web API geliştirilmiştir.**
 
 Örnek istek
@@ -25,6 +29,10 @@ Dönen sonuç kurun en yük değeridir.
 ------------
 Unit ve integration testleri yazılmıştır.
 
-**Not: Eğer haftasonu ise merkez bankası sonuç olarak null dönmektedir ve bu bilgi log olarak yazdırılmaktadır. Max kur değeri için log yazdırılmaktadır, çünkü en yüksek kur değerini bulmaya çalıştığı için log yazdırmadan hızlı bir şekilde işlem yapması amaçlanmıştır**
+
+**Not: Eğer haftasonu ise merkez bankası sonuç olarak null dönmektedir ve bu bilgi log olarak yazdırılmaktadır. Max kur değeri için log yazdırılmaktadır, çünkü en yüksek kur değerini bulmaya çalıştığı için log yazdırmadan hızlı bir şekilde işlem yapması amaçlanmıştır**  
+
+---------------
+
 
 
