@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.boot.web.server.LocalServerPort;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,6 +24,7 @@ public class TestGetExchangeRate {
 
     @Test
     public void testGetExchangeRatesListToday(){
+
         //if today is not weekend
         List<Currency> currencyList = this.restTemplate.getForObject("http://localhost:" + port + "/api/getExchangeRatesListToday", List.class);
         assertNotNull(currencyList);
