@@ -1,10 +1,15 @@
 # Merkez Bankasından döviz kurlarını sorgular
 --------------------------
-<bold>Verileri cacheden getirmek için redis kullanıldı. Docker içine redis kuruldu. Redis ve dockerli kodu görmek için redis_docker branchine bakmalısınız.</bold>
 
-Redis_docker branchini çalıştırmak için ana docker-compose up yaptıktan sonra projeyi çalıştırmalısınız.
+Merkez bankasından döviz bilgilerini çekmek için bazı methodlar kullanılmıştır. <br>
 
-------------------
+Master branchinde merkez bankasından çekilen bilgileri redis kullanarak belirli bir süreliğine cachelemektedir. Bu sayede o süre zarfında atılan isteklerin sonuçları cacheden gelip merkez bankasına istek atmamaktadır. <br>
+Master branchini çalıştırmak için öncelikle "docker-compose up" komutu ile docker çalıştırıldıktan sonra proje çalıştırılmalıdır. <br>
+
+without_redis_docker branchinde redis ve docker kullanılmadan yapılmıştır. Her istek merkez bankasına gidip cevap dönmektedir. <br>
+
+--------------
+
 **1- Döviz kurlarının döviz kodlarına göre aynı gün için sorgulayabileceğimiz Rest Web API geliştirilmiştir.**
 
 Örnek istek

@@ -7,9 +7,11 @@ import lombok.experimental.UtilityClass;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @UtilityClass
 
-public class TestEntityBuilder {
+public class TestUtil {
 
 
     public TarihDate createTarihDate() {
@@ -40,5 +42,15 @@ public class TestEntityBuilder {
         currency.setBanknoteBuying(new BigDecimal("12.6779"));
         currency.setBanknoteSelling(new BigDecimal("12.8965"));
         return currency;
+    }
+
+    public void assertEqualsCurrency(Currency currency, Currency expectedCurrency) {
+        assertEquals(expectedCurrency.getCurrencyCode(), currency.getCurrencyCode());
+        assertEquals(expectedCurrency.getIsim(), currency.getIsim());
+        assertEquals(expectedCurrency.getCurrencyName(), currency.getCurrencyName());
+        assertEquals(expectedCurrency.getForexBuying(), currency.getForexBuying());
+        assertEquals(expectedCurrency.getForexSelling(), currency.getForexSelling());
+        assertEquals(expectedCurrency.getBanknoteSelling(), currency.getBanknoteSelling());
+        assertEquals(expectedCurrency.getBanknoteBuying(), currency.getBanknoteBuying());
     }
 }
