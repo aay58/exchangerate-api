@@ -1,6 +1,6 @@
 package com.project.exchangerateapi.unittest.exchangerate.service;
 
-import com.project.exchangerateapi.common.TestEntityBuilder;
+import com.project.exchangerateapi.common.TestUtil;
 import com.project.exchangerateapi.exchangerate.caller.TCMBCaller;
 import com.project.exchangerateapi.exchangerate.dto.Currency;
 import com.project.exchangerateapi.exchangerate.dto.TarihDate;
@@ -16,7 +16,8 @@ import org.mockito.quality.Strictness;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -34,7 +35,7 @@ public class TestGetExchangeRatesListToday {
 
     @BeforeEach
     void beforeEach() {
-        tarihDate = TestEntityBuilder.createTarihDate();
+        tarihDate = TestUtil.createTarihDate();
     }
 
     @Test
@@ -43,8 +44,8 @@ public class TestGetExchangeRatesListToday {
 
         List<Currency> currencyList = exchangeRateService.getExchangeRatesListToday();
         assertEquals(currencyList.size(), 2);
-        assertEqualsCurrency(currencyList.get(0), tarihDate.getCurrencyList().get(0));
-        assertEqualsCurrency(currencyList.get(1), tarihDate.getCurrencyList().get(1));
+        TestUtil.assertEqualsCurrency(currencyList.get(0), tarihDate.getCurrencyList().get(0));
+        TestUtil.assertEqualsCurrency(currencyList.get(1), tarihDate.getCurrencyList().get(1));
 
         verify(tcmbCaller).getExchangeRatesListToday();
     }
@@ -57,17 +58,6 @@ public class TestGetExchangeRatesListToday {
         assertNull(currencyList);
 
         verify(tcmbCaller).getExchangeRatesListToday();
-    }
-
-    private void assertEqualsCurrency(Currency currency, Currency createdCurrency) {
-        assertEquals(currency.getCurrencyCode(), createdCurrency.getCurrencyCode());
-        assertEquals(currency.getIsim(), createdCurrency.getIsim());
-        assertEquals(currency.getCurrencyName(), createdCurrency.getCurrencyName());
-        assertEquals(currency.getForexBuying(), createdCurrency.getForexBuying());
-        assertEquals(currency.getForexSelling(), createdCurrency.getForexSelling());
-        assertEquals(currency.getBanknoteSelling(), createdCurrency.getBanknoteSelling());
-        assertEquals(currency.getBanknoteBuying(), createdCurrency.getBanknoteBuying());
-
     }
 
 }

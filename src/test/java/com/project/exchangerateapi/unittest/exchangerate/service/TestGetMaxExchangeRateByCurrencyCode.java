@@ -1,6 +1,6 @@
 package com.project.exchangerateapi.unittest.exchangerate.service;
 
-import com.project.exchangerateapi.common.TestEntityBuilder;
+import com.project.exchangerateapi.common.TestUtil;
 import com.project.exchangerateapi.exchangerate.caller.TCMBCaller;
 import com.project.exchangerateapi.exchangerate.dto.Currency;
 import com.project.exchangerateapi.exchangerate.dto.TarihDate;
@@ -38,7 +38,7 @@ public class TestGetMaxExchangeRateByCurrencyCode {
 
     @BeforeEach
     void beforeEach() {
-        tarihDate = TestEntityBuilder.createTarihDate();
+        tarihDate = TestUtil.createTarihDate();
         startDate = LocalDate.of(2023,02,10);
 
     }
@@ -46,7 +46,7 @@ public class TestGetMaxExchangeRateByCurrencyCode {
     public void testGetMaxExchangeRateByCurrencyCode() {
         endDate = LocalDate.of(2023,03,10);
 
-        TarihDate tarihDateEndDate = TestEntityBuilder.createTarihDate();
+        TarihDate tarihDateEndDate = TestUtil.createTarihDate();
         tarihDateEndDate.getCurrencyList().get(0).setForexSelling(new BigDecimal("20.00"));
 
         when(tcmbCaller.getExchangeRateByDate(startDate, false)).thenReturn(tarihDate);
@@ -64,7 +64,7 @@ public class TestGetMaxExchangeRateByCurrencyCode {
     public void testGetMaxExchangeRateByCurrencyCodeStartDateHigh() {
         endDate = LocalDate.of(2023,03,10);
 
-        TarihDate tarihDateEndDate = TestEntityBuilder.createTarihDate();
+        TarihDate tarihDateEndDate = TestUtil.createTarihDate();
         tarihDateEndDate.getCurrencyList().get(0).setForexSelling(new BigDecimal("15.00"));
 
         when(tcmbCaller.getExchangeRateByDate(startDate, false)).thenReturn(tarihDate);
@@ -119,7 +119,7 @@ public class TestGetMaxExchangeRateByCurrencyCode {
 
         BigDecimal maxRate = exchangeRateService.getMaxExchangeRateByCurrencyCode(startDate, endDate, "USD");
         assertNotNull(maxRate);
-        assertEquals(maxRate.toString(), "18.8991");
+        assertEquals("18.8991", maxRate.toString());
 
         verify(tcmbCaller).getExchangeRateByDate(startDate, false);
         verify(tcmbCaller).getExchangeRateByDate(endDate, false);
@@ -134,7 +134,7 @@ public class TestGetMaxExchangeRateByCurrencyCode {
 
         BigDecimal maxRate = exchangeRateService.getMaxExchangeRateByCurrencyCode(startDate, endDate, "USD");
         assertNotNull(maxRate);
-        assertEquals(maxRate.toString(), "0");
+        assertEquals("0", maxRate.toString());
 
         verify(tcmbCaller).getExchangeRateByDate(startDate, false);
         verify(tcmbCaller).getExchangeRateByDate(endDate, false);

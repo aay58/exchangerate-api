@@ -37,7 +37,8 @@ public class TCMBCaller {
         try {
             return restTemplate.getForObject(url, TarihDate.class);
         } catch (Exception e) {
-            if (isLogShow) log.error("Data could not be found because the given date is weekend. Date: {}", date);
+            if (isLogShow)
+                log.error("Data could not be found because the given date is weekend. Date: {}", date);
         }
         return null;
     }
