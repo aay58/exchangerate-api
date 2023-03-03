@@ -6,7 +6,7 @@ Merkez bankasından döviz bilgilerini çekmek için bazı methodlar kullanılm�
 Master branchinde merkez bankasından çekilen bilgileri redis kullanarak belirli bir süreliğine cachelemektedir. Bu sayede o süre zarfında atılan isteklerin sonuçları cacheden gelip merkez bankasına istek atmamaktadır. <br>
 Master branchini çalıştırmak için öncelikle "docker-compose up" komutu ile docker çalıştırıldıktan sonra proje çalıştırılmalıdır. <br>
 
-without_redis_docker branchinde redis ve docker kullanılmadan yapılmıştır. Her istek merkez bankasına gidip cevap dönmektedir. <br>
+**without_redis_docker branchinde redis ve docker kullanılmadan yapılmıştır. Her istek merkez bankasına gidip cevap dönmektedir.** <br>
 
 --------------
 
@@ -41,7 +41,7 @@ Dönen sonuç kurun en yük değeridir.
 Unit ve integration testleri yazılmıştır.
 
 
-**Not: Eğer haftasonu ise merkez bankası sonuç olarak null dönmektedir ve bu bilgi log olarak yazdırılmaktadır. Max kur değeri için log yazdırılmaktadır, çünkü en yüksek kur değerini bulmaya çalıştığı için log yazdırmadan hızlı bir şekilde işlem yapması amaçlanmıştır**  
+**Not: Eğer haftasonu ise merkez bankası sonuç olarak null dönmektedir ve bu bilgi log olarak yazdırılmaktadır. Max kur değeri için log yazdırılmamaktadır, çünkü en yüksek kur değerini bulmaya çalıştığı için log yazdırmadan hızlı bir şekilde işlem yapması amaçlanmıştır**  
 
 ---------------
 
